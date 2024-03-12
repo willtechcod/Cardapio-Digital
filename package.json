@@ -1,0 +1,15 @@
+{
+  "name": "cardapio",
+  "version": "1.0.0",
+  "description": "Cardápio digital com atendimento via whatsapp",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./styles/style.css -o ./styles/output.css --watch"
+  },
+  "keywords": [],
+  "author": "William Pereira da Conceição",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
