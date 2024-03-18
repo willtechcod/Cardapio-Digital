@@ -153,8 +153,8 @@ checkoutBtn.addEventListener("click", function(){
                      style: {
                          background: "#ef4444",
                    },
-                 }).showToast()
-        return
+                 }).showToast();
+        return;
     };
 
     if(addressInput.value === ""){
@@ -162,6 +162,7 @@ checkoutBtn.addEventListener("click", function(){
         addressInput.classList.add("border-red-500")
         return;
     }
+    
     // Enviar o pedido para api do whatsApp
     const cartIems = cart.map((item) => {
         return (

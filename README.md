@@ -13,7 +13,7 @@ Abaixo podemos ver o resultado final do projeto. Espero que gostem!
 
 # 🔗 Acesse o site com o link abaixo.
 
-- [WillTech Hamburgueria - O melhor hamburguer da cidade ](https://willtechcod.github.io/Cardapio-Digital/)
+- [WillTech Hamburgueria - O melhor hamburguer da cidade ](https://willtechcod.github.io/Cardapio-Digital/_blank)
 
 ## :computer: Tecnologias utilizadas
 
