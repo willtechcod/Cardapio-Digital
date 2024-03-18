@@ -112,3 +112,84 @@ function removeItemCart(name){
         updateCartModal();
     }
 }
+
+addressInput.addEventListener("input", function(event) {
+    let inputValue = event.target.value;
+
+    if(inputValue !== ""){
+        addressInput.classList.remove("border-red-500")
+        addressWarn.classList.add("hidden")
+    }
+});
+
+    // Finalizar o Pedido
+checkoutBtn.addEventListener("click", function(){
+
+     const isOpen = checkEstablishmentOpen();
+     if(!isOpen){
+         Toastify({
+            text: "Ops o WillTech Burguer está fechado!",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+                background: "#ef4444",
+            },
+         }).showToast();
+         
+         return;
+     }
+
+    if(cart.length === 0) {
+        Toastify({
+                     text: "Ops você precisa adicionar um item para finalizar o pedido!",
+                     duration: 3000,
+                     close: true,
+                     gravity: "top",
+                     position: "center",
+                     stopOnFocus: true,
+                     style: {
+                         background: "#ef4444",
+                   },
+                 }).showToast()
+        return
+    };
+
+    if(addressInput.value === ""){
+        addressWarn.classList.remove("hidden")
+        addressInput.classList.add("border-red-500")
+        return;
+    }
+    // Enviar o pedido para api do whatsApp
+    const cartIems = cart.map((item) => {
+        return (
+            `${item.name} Quantidade: (${item.quantity}) Preço: R$ ${item.price} | `
+        )
+    }).join("")
+
+    const message = encodeURIComponent(cartIems);
+    const phone = "47000000000"
+
+    window.open(`https://wa.me/${phone}?text=${message} Endereço para entrega: ${addressInput.value}`, "_blank");
+    cart = [];
+    updateCartModal();
+})
+
+function checkEstablishmentOpen(){
+    const data = new Date();
+    const hours = data.getHours();
+    return hours >= 18 && hours < 23;
+}
+
+const spanItem  = document.getElementById("date-span");
+const isOpen = checkEstablishmentOpen();
+
+if(isOpen){
+    spanItem.classList.remove("bg-red-500");
+    spanItem.classList.add("bg-green-600");
+}else {
+    spanItem.classList.remove("bg-green-600");
+    spanItem.classList.add("bg-red-500");
+}
